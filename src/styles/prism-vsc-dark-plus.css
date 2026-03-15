@@ -276,12 +276,24 @@ html.dark {
   }
 
   /* Estilos para numeração de linhas no modo escuro */
+  pre.line-numbers {
+    position: relative; /* Garante o contexto de posicionamento */
+    padding-left: 3.8em; /* Cria espaço para os números de linha */
+  }
+
   .line-numbers .line-numbers-rows {
     border-right-color: #49483e; /* Cor da borda da numeração */
     background-color: #1e1e1e; /* Fundo escuro para a coluna de números */
+    position: absolute; /* Posicionamento absoluto para a coluna */
+    pointer-events: none;
+    top: 0;
+    left: 0;
+    width: 3em; /* Largura da coluna de números */
+    height: 100%;
   }
 
   .line-numbers .line-numbers-rows > span:before {
     color: #6a9955; /* Cor dos números das linhas */
+    display: block; /* Garante que cada número seja um bloco */
   }
 }

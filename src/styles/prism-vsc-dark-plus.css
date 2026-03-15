@@ -265,6 +265,20 @@ code[class*="language-html"] {
 .language-html .token.punctuation {
 	color: #808080;
 }
+
+
+/* overrides color-values for the Line Numbers plugin
+ * http://prismjs.com/plugins/line-numbers/
+ */
+.line-numbers.line-numbers .line-numbers-rows {
+	border-right-color: #a5a5a5;
+}
+
+.line-numbers .line-numbers-rows > span:before {
+	color: #2B91AF;
+}
+
+
 /*********************************************************
 * Line highlighting
 */

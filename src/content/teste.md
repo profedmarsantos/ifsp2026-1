@@ -2,7 +2,105 @@
 
 Este tutorial demonstra como encontrar e imprimir todos os números primos no intervalo de 1 a 50 usando a linguagem de programação C.
 
-## O que é um Número Primo?
+## O que é um código em C?
+
+## Código em C
+
+```c
+#include <stdio.h>
+#include <math.h>
+
+int main() {
+    double a, b;
+    int inicio, fim;
+
+    printf("Digite o valor de a: ");
+    scanf("%lf", &a);
+    printf("Digite o valor de b: ");
+    scanf("%lf", &b);
+
+    printf("\nHello World\n");
+    printf("Soma: %.2f\n", a + b);
+    printf("%.2f elevado a %.2f: %.2f\n", a, b, pow(a, b));
+
+    // Lógica para descobrir quem é maior e definir o intervalo
+    if (a < b) {
+        printf("%.2f e menor que %.2f\n", a, b);
+        inicio = (int)a;
+        fim = (int)b;
+    } else if (a > b) {
+        printf("%.2f e maior que %.2f\n", a, b);
+        inicio = (int)b;
+        fim = (int)a;
+    } else {
+        printf("Os numeros sao iguais.\n");
+        inicio = (int)a;
+        fim = (int)b;
+    }
+
+    // Loop para mostrar a sequência
+    printf("Sequencia do menor ao maior: ");
+    for (int i = inicio; i <= fim; i++) {
+        printf("%d ", i);
+    }
+    printf("\n");
+
+    return 0;
+}
+```
+
+## Versão em Portugol
+
+```portugol
+programa
+{
+    funcao inicio()
+    {
+        real a, b
+        inteiro inicio, fim
+
+        escreva("Digite o valor de a: ")
+        leia(a)
+
+        escreva("Digite o valor de b: ")
+        leia(b)
+
+        escreva("\nHello World\n")
+        escreva("Soma: ", a + b, "\n")
+        escreva(a, " elevado a ", b, ": ", potencia(a, b), "\n")
+
+        // Lógica para descobrir quem é maior e definir o intervalo
+        se (a < b)
+        {
+            escreva(a, " e menor que ", b, "\n")
+            inicio = a
+            fim = b
+        }
+        senao se (a > b)
+        {
+            escreva(a, " e maior que ", b, "\n")
+            inicio = b
+            fim = a
+        }
+        senao
+        {
+            escreva("Os numeros sao iguais.\n")
+            inicio = a
+            fim = b
+        }
+
+        // Loop para mostrar a sequência
+        escreva("Sequencia do menor ao maior: ")
+
+        para (inteiro i = inicio; i <= fim; i++)
+        {
+            escreva(i, " ")
+        }
+
+        escreva("\n")
+    }
+}
+```
 
 Um número primo é um número natural maior que 1 que não possui divisores positivos além de 1 e ele mesmo. Por exemplo, 2, 3, 5, 7 são números primos.
 

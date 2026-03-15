@@ -2,7 +2,7 @@ import React, { useEffect, useRef } from 'react';
 import Prism from 'prismjs';
 
 // Importe o plugin de numeração de linhas (sempre ativo)
-import 'prismjs/plugins/line-numbers/prism-line-numbers.css';
+// import 'prismjs/plugins/line-numbers/prism-line-numbers.css'; // Removido daqui
 import 'prismjs/plugins/line-numbers/prism-line-numbers.js';
 
 // Importe os componentes de linguagem do Prism que você espera usar.

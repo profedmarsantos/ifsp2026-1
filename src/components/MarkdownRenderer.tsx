@@ -1,30 +1,65 @@
-import { Toaster } from "@/components/ui/toaster";
-import { Toaster as Sonner } from "@/components/ui/sonner";
-import { TooltipProvider } from "@/components/ui/tooltip";
-import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
-import { ThemeProvider } from "next-themes";
-import Index from "./pages/Index";
-import NotFound from "./pages/NotFound";
+"use client";
 
-const queryClient = new QueryClient();
+import React, { useState, useEffect } from 'react';
+import ReactMarkdown from 'react-markdown';
+import remarkGfm from 'remark-gfm';
+import rehypeRaw from 'rehype-raw';
+import MarkdownCodeBlock from './MarkdownCodeBlock';
+import { CodeProps } from 'react-markdown'; // Corrigindo o caminho de importação para CodeProps
 
-const App = () => (
-  <QueryClientProvider client={queryClient}>
-    <ThemeProvider attribute="class" defaultTheme="light" enableSystem>
-      <TooltipProvider>
-        <Toaster />
-        <Sonner />
-        <BrowserRouter future={{ v7_startTransition: true, v7_relativeSplatPath: true }}> {/* Adicionando v7_relativeSplatPath */}
-          <Routes>
-            <Route path="/" element={<Index />} />
-            {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
-            <Route path="*" element={<NotFound />} />
-          </Routes>
-        </BrowserRouter>
-      </TooltipProvider>
-    </ThemeProvider>
-  </QueryClientProvider>
-);
+interface MarkdownRendererProps {
+  markdownPath: string;
+}
 
-export default App;
+const MarkdownRenderer: React.FC<MarkdownRendererProps> = ({ markdownPath }) => {
+  const [markdown, setMarkdown] = useState<string>('');
+  const [error, setError] = useState<string | null>(null);
+
+  useEffect(() => {
+    const fetchMarkdown = async () => {
+      try {
+        const response = await fetch(markdownPath);
+        if (!response.ok) {
+          throw new Error(`Failed to fetch markdown: ${response.statusText}`);
+        }
+        const text = await response.text();
+        setMarkdown(text);
+      } catch (err) {
+        console.error("Error fetching markdown:", err);
+        setError("Failed to load content. Please try again later.");
+      }
+    };
+
+    fetchMarkdown();
+  }, [markdownPath]);
+
+  if (error) {
+    return <div className="text-red-500 p-4">{error}</div>;
+  }
+
+  if (!markdown) {
+    return <div className="p-4 text-gray-500">Loading content...</div>;
+  }
+
+  return (
+    <div className="markdown-container p-8 bg-card shadow-lg rounded-lg">
+      <ReactMarkdown
+        remarkPlugins={[remarkGfm]}
+        rehypePlugins={[rehypeRaw]}
+        components={{
+          code({ node, inline, className, children, ...props }: CodeProps) {
+            return (
+              <MarkdownCodeBlock inline={inline} className={className} {...props}>
+                {children}
+              </MarkdownCodeBlock>
+            );
+          },
+        }}
+      >
+        {markdown}
+      </ReactMarkdown>
+    </div>
+  );
+};
+
+export default MarkdownRenderer;

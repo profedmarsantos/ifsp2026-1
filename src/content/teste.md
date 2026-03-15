@@ -46,3 +46,95 @@ int main() {
 
     return 0;
 }
+```
+
+## Código em Portugol
+
+```portugol
+programa
+{
+    funcao inicio()
+    {
+        inteiro a, b
+        inteiro tempA, tempB
+        inteiro resto, mdc, mmc
+
+        escreva("Digite o primeiro número inteiro positivo: ")
+        leia(a)
+        escreva("Digite o segundo número inteiro positivo: ")
+        leia(b)
+
+        se (a <= 0 ou b <= 0)
+        {
+            escreva("Erro: Os números devem ser positivos.\n")
+        }
+        senao
+        {
+            tempA = a
+            tempB = b
+
+            enquanto (b != 0)
+            {
+                resto = a % b
+                a = b
+                b = resto
+            }
+            mdc = a
+
+            mmc = (tempA * tempB) / mdc
+
+            escreva("\nResultado:\n")
+            escreva("MDC: ", mdc, "\n")
+            escreva("MMC: ", mmc, "\n")
+        }
+    }
+}
+```
+
+## Explicação do Código C
+
+1. **`#include <stdio.h>`**: Inclui a biblioteca padrão de entrada e saída para funções como `printf`.
+
+```c
+#include <stdio.h>
+int main() {
+    printf("Oi!");
+}
+```
+
+2. **`#include <stdbool.h>`**: Inclui a biblioteca para usar o tipo booleano (`bool`, `true`, `false`).
+3. **`bool isPrime(int num)`**:
+    * Esta função recebe um inteiro `num` e retorna `true` se for primo, `false` caso contrário.
+    * `if (num <= 1)`: Números menores ou iguais a 1 não são primos por definição.
+    * `for (int i = 2; i * i <= num; i++)`: Este laço itera de 2 até a raiz quadrada de `num`.
+    * `if (num % i == 0)`: Se o resto da divisão for 0, retorna `false`.
+
+## Exemplo de Saída Esperada
+
+```text
+1
+2
+3
+...
+19
+20
+```
+
+## Como Compilar e Executar em C
+
+Para compilar e executar este código, você precisará de um compilador C (como GCC).
+
+1. **Salve o código** em um arquivo chamado `primos.c`.
+2. **Abra um terminal**.
+3. **Compile o código**:
+   ```bash
+   gcc primos.c -o primos
+   ```
+4. **Execute o programa**:
+   ```bash
+   ./primos
+   ```
+
+```c
+printf("Oi, mundo!");
+```

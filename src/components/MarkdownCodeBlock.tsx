@@ -39,8 +39,8 @@ const MarkdownCodeBlock = ({ inline, className, children }: MarkdownCodeBlockPro
     return <code className={className}>{children}</code>;
   }
 
-  // Adiciona a classe de tema Portugol se a linguagem for 'portugol'
-  const preClasses = `line-numbers ${className} p-4 rounded-md my-4 overflow-auto ${lang === 'portugol' ? 'portugol-light' : ''}`;
+  // Removida a classe de tema Portugol, agora usando apenas o tema padrão do Prism
+  const preClasses = `line-numbers ${className} p-4 rounded-md my-4 overflow-auto`;
 
   return (
     <pre className={preClasses}>

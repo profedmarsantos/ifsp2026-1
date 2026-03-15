@@ -100,6 +100,7 @@ Para compilar e executar este código, você precisará de um compilador C (como
 1.  **`#include <stdio.h>`**: Inclui a biblioteca padrão de entrada e saída para funções como `printf`.
 
 ### Exemplo:
+
 ```c
 #include <stdio.h>
 int main() {
@@ -116,6 +117,7 @@ int main() {
     *   Se o laço terminar sem encontrar divisores, `num` é primo e a função retorna `true`.
 
 4.  **Execute um teste**:
+
     ```text
     1
     2
@@ -139,69 +141,8 @@ int main() {
     20
     ```
 
-5.  **`int main()`**: Esta é a função principal onde a execução do programa começa.
 
-## Código em Portugol
-
-```portugol
-programa
-{
-    funcao inicio()
-    {
-        inteiro a, b
-        inteiro tempA, tempB
-        inteiro resto, mdc, mmc
-
-        escreva("Digite o primeiro número inteiro positivo: ")
-        leia(a)
-        escreva("Digite o segundo número inteiro positivo: ")
-        leia(b)
-
-        se (a <= 0 ou b <= 0)
-        {
-            escreva("Erro: Os números devem ser positivos.\n")
-        }
-        senao
-        {
-            tempA = a
-            tempB = b
-
-            enquanto (b != 0)
-            {
-                resto = a % b
-                a = b
-                b = resto
-            }
-            mdc = a
-
-            mmc = (tempA * tempB) / mdc
-
-            escreva("\nResultado:\n")
-            escreva("MDC: ", mdc, "\n")
-            escreva("MMC: ", mmc, "\n")
-        }
-    }
-}
-```
-## Como Compilar e Executar em C
-
-Para compilar e executar este código, você precisará de um compilador C (como GCC).
-
-1.  **Salve o código** em um arquivo chamado `primos.c`.
-2.  **Abra um terminal** ou prompt de comando.
-3.  **Compile o código** usando o GCC:
-    ```bash
-    gcc primos.c -o primos
-    ```
-4.  **Execute o programa**:
-    ```bash
-    ./primos
-    ```
-5. Mais um: 
-```c
-printf("Oi, mundo!");
-```
-
+## FIM
 
 
     Você verá a lista de números primos de 1 a 50 sendo impressa no console.

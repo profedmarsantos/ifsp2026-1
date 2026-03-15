@@ -29,9 +29,7 @@ export const portugolPrism = {
 		alias: 'builtin'
 	},
 
-	keyword: /\b(programa|funcao|escreva|leia|inicio|fim|se|senao|entao|enquanto|para|faca|retorne|pare|caso|escolha|const|inclua|biblioteca|inteiro|real|cadeia|caracter|logico)\b/,
-
-	builtin: /\b(limpa|pausa|sorteia|aleatorio)\b/,
+	keyword: /\b(programa|funcao|se|senao|entao|enquanto|para|faca|retorne|pare|caso|escolha|const|inclua|biblioteca|inteiro|real|cadeia|caracter|logico)\b/,
 
 	operator: /\b(e|ou|nao)\b|==|!=|<=|>=|\+|-|\*|\/|%|<|>|=/,
 

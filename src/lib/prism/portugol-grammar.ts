@@ -20,11 +20,11 @@ export const portugolPrism = {
 
   boolean: /\b(verdadeiro|falso)\b/,
 
-  keyword: /\b(programa|funcao|inicio|fim|se|senao|entao|enquanto|para|faca|retorne|pare|caso|escolha|const|inclua|biblioteca)\b/,
+  keyword: /\b(programa|funcao|escreva|leia|inicio|fim|se|senao|entao|enquanto|para|faca|retorne|pare|caso|escolha|const|inclua|biblioteca)\b/,
 
   type: /\b(inteiro|real|cadeia|caracter|logico)\b/,
 
-  builtin: /\b(escreva|leia|limpa|pausa|sorteia|aleatorio)\b/,
+  builtin: /\b(limpa|pausa|sorteia|aleatorio)\b/,
 
   operator: /\b(e|ou|nao)\b|==|!=|<=|>=|\+|-|\*|\/|%|<|>|=/,
 

@@ -20,6 +20,10 @@ Vamos usar uma função auxiliar para verificar a primalidade e um laço princip
 
 // Função para verificar se um número é primo
 bool isPrime(int num) {
+    int x, y = 0;
+    float xf, yf = 0.0f;
+    double dx;
+
     if (num <= 1) {
         return false; // Números menores ou iguais a 1 não são primos
     }

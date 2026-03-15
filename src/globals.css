@@ -1,12 +1,9 @@
+@import 'prismjs/themes/prism.css';
+@import './styles/prism-tomorrow-dark.css';
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-
-/* Prism Light Theme (default) */
-@import 'prismjs/themes/prism.css';
-
-/* Prism Dark Theme (for dark mode) */
-@import './styles/prism-tomorrow-dark.css';
 
 @layer base {
   :root {

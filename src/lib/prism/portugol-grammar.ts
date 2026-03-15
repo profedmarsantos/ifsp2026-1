@@ -22,13 +22,11 @@ export const portugolPrism = {
 
   keyword: /\b(programa|funcao|inicio|fim|se|senao|entao|enquanto|para|faca|retorne|pare|caso|escolha|const|inclua|biblioteca)\b/,
 
-  control: /\b(se|senao|entao|enquanto|para|faca|caso|escolha)\b/,
-
   type: /\b(inteiro|real|cadeia|caracter|logico)\b/,
 
-  operator: /\b(e|ou|nao)\b|==|!=|<=|>=|\+|\-|\*|\/|%|<|>|=/,
-
   builtin: /\b(escreva|leia|limpa|pausa|sorteia|aleatorio)\b/,
+
+  operator: /\b(e|ou|nao)\b|==|!=|<=|>=|\+|-|\*|\/|%|<|>|=/,
 
   'class-name': {
     pattern: /\b(Matematica|Graficos|Arquivos|Sons|Teclado|Mouse|Calendario|Internet)\b/,

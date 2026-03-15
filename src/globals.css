@@ -1,6 +1,32 @@
 @import 'prismjs/themes/prism.css'; /* Estilos base do Prism */
 @import 'prismjs/plugins/line-numbers/prism-line-numbers.css'; /* Estilos para numeração de linhas */
 
+/* Adicionar estilos estruturais para numeração de linhas globalmente */
+pre.line-numbers {
+  position: relative;
+  padding-left: 3.8em; /* Espaço para os números */
+}
+
+.line-numbers .line-numbers-rows {
+  position: absolute;
+  pointer-events: none;
+  top: 0;
+  left: 0;
+  width: 3em; /* Largura da coluna de números */
+  height: 100%;
+  font-size: 100%; /* Garante que o tamanho da fonte seja consistente */
+  line-height: inherit; /* Herda a altura da linha do pre */
+}
+
+.line-numbers .line-numbers-rows > span:before {
+  display: block; /* Garante que cada número seja um bloco */
+  pointer-events: none;
+  content: attr(data-line-number);
+  color: #999; /* Cor padrão, será sobrescrita pelos temas */
+  padding-right: 0.8em;
+  text-align: right;
+}
+
 @import './styles/prism-vs.css'; /* Tema claro */
 @import './styles/prism-vsc-dark-plus.css'; /* Tema escuro */
 

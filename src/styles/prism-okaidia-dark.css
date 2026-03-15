@@ -35,6 +35,7 @@ html.dark {
     margin: .5em 0;
     overflow: auto;
     border-radius: 0.3em;
+    box-shadow: none; /* Removendo a sombra */
   }
 
   :not(pre) > code[class*="language-"],
@@ -122,5 +123,14 @@ html.dark {
 
   .token.entity {
     cursor: help;
+  }
+
+  /* Estilos para numeração de linhas no modo escuro */
+  .line-numbers .line-numbers-rows {
+    border-right-color: #49483e; /* Cor da borda da numeração */
+  }
+
+  .line-numbers .line-numbers-rows > span:before {
+    color: #8292a2; /* Cor dos números das linhas */
   }
 }

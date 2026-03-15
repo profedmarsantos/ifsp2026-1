@@ -1,13 +1,7 @@
 export const portugolPrism = {
 	comment: [
-		{
-			pattern: /\/\/.*/,
-			greedy: true
-		},
-		{
-			pattern: /\/\*[\s\S]*?\*\//,
-			greedy: true
-		}
+		{ pattern: /\/\/.*/, greedy: true },
+		{ pattern: /\/\*[\s\S]*?\*\//, greedy: true }
 	],
 
 	string: {
@@ -20,21 +14,20 @@ export const portugolPrism = {
 	boolean: /\b(verdadeiro|falso)\b/,
 
 	namespace: {
-		pattern: /\b(Matematica|Graficos|Arquivos|Sons|Teclado|Mouse|Calendario|Internet)(?=\.)/,
+		pattern: /\b(Arquivos|Calendario|Graficos|Internet|Matematica|Mouse|Objetos|ServicosWeb|Sons|Teclado|Texto|Tipos|Util)(?=\.)/,
 		alias: 'class-name'
 	},
 
 	'class-name': {
-		pattern: /\b(Matematica|Graficos|Arquivos|Sons|Teclado|Mouse|Calendario|Internet)\b/,
+		pattern: /\b(Arquivos|Calendario|Graficos|Internet|Matematica|Mouse|Objetos|ServicosWeb|Sons|Teclado|Texto|Tipos|Util)\b/,
 		alias: 'builtin'
 	},
 
-	keyword: /\b(programa|funcao|se|senao|entao|enquanto|para|faca|retorne|pare|caso|escolha|const|inclua|biblioteca)\b/,
+	keyword: /\b(programa|funcao|se|senao|enquanto|faca|para|escolha|caso|contrario|pare|retorne|constante|inclua|biblioteca)\b/,
 
-	// ← NOVO TOKEN: tipos de dados com cor separada!
-	type: /\b(inteiro|real|cadeia|caracter|logico)\b/,
+	type: /\b(inteiro|real|vazio|logico|cadeia|caracter)\b/,
 
-	operator: /\b(e|ou|nao)\b|==|!=|<=|>=|\+|-|\*|\/|%|<|>|=/,
+	operator: /\b(e|ou|nao)\b|==|!=|<=|>=|\+|-|\*|\/|%|<|>|=\+|-=|\*=|\/=|\+\+|--/,
 
 	constant: /\b(PI|VERDADEIRO|FALSO)\b/,
 

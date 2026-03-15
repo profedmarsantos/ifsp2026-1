@@ -39,6 +39,7 @@ html.dark {
     padding: 1em;
     margin: .5em 0;
     overflow: auto;
+	  border: 1px solid #dddddd;    
     background: #1e1e1e; /* Fundo do bloco de código */
   }
 

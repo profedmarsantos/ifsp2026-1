@@ -39,8 +39,11 @@ const MarkdownCodeBlock = ({ inline, className, children }: MarkdownCodeBlockPro
     return <code className={className}>{children}</code>;
   }
 
+  // Adiciona a classe de tema Portugol se a linguagem for 'portugol'
+  const preClasses = `line-numbers ${className} p-4 rounded-md my-4 overflow-auto ${lang === 'portugol' ? 'portugol-light' : ''}`;
+
   return (
-    <pre className={`line-numbers ${className} p-4 rounded-md my-4 overflow-auto`}>
+    <pre className={preClasses}>
       <code ref={codeRef} className={`language-${lang}`}>
         {children}
       </code>

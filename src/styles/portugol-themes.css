@@ -1,0 +1,36 @@
+/* TEMA DARK */
+
+.portugol-dark {
+  background-color: #263238;
+  color: #fbfbfb;
+  border-radius: 8px;
+}
+
+.portugol-dark .token.keyword { color: #f1433c; font-weight: bold; }
+.portugol-dark .token.string { color: #ffc116; }
+.portugol-dark .token.number { color: #00f0c0; }
+.portugol-dark .token.comment { color: #66747b; font-style: italic; }
+.portugol-dark .token.type { color: #fbfbfb; }
+.portugol-dark .token.function { color: #39bdff; }
+.portugol-dark .token.class-name { color: #e8e2b7; }
+.portugol-dark .token.punctuation { color: #e8e2b7; }
+.portugol-dark .token.operator { color: #39bdff; }
+
+/* TEMA LIGHT */
+
+.portugol-light {
+  background-color: #ffffff;
+  color: #000000;
+  border: 1px solid #e2e8f0;
+  border-radius: 8px;
+}
+
+.portugol-light .token.keyword { color: #0038fc; font-weight: bold; }
+.portugol-light .token.string { color: #dc009c; }
+.portugol-light .token.number { color: #6400c8; }
+.portugol-light .token.comment { color: #888888; font-style: italic; }
+.portugol-light .token.type { color: #c77f00; }
+.portugol-light .token.function { color: #ff0038; }
+.portugol-light .token.class-name { color: #be633f; }
+.portugol-light .token.punctuation { color: #000000; }
+.portugol-light .token.operator { color: #000000; }

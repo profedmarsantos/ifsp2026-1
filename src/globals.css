@@ -145,3 +145,6 @@
     margin-bottom: 1rem;
   }
 }
+
+/* Importa os temas de Portugol */
+@import "./styles/portugol-themes.css";

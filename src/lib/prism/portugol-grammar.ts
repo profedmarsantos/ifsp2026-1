@@ -20,7 +20,7 @@ export const portugolPrism = {
 
   boolean: /\b(verdadeiro|falso)\b/,
 
-  keyword: /\b(programa|funcao|escreva|leia|inicio|fim|se|senao|entao|enquanto|para|faca|retorne|pare|caso|escolha|const|inclua|biblioteca)\b/,
+  keyword: /\b(programa|funcao|escreva|leia|inicio|fim|se|senao|entao|enquanto|para|faca|retorne|pare|caso|escolha|const|inclua|biblioteca|inteiro|real|cadeia|caracter|logico)\b/,
 
   type: /\b(inteiro|real|cadeia|caracter|logico)\b/,
 

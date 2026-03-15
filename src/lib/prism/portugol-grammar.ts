@@ -29,7 +29,10 @@ export const portugolPrism = {
 		alias: 'builtin'
 	},
 
-	keyword: /\b(programa|funcao|se|senao|entao|enquanto|para|faca|retorne|pare|caso|escolha|const|inclua|biblioteca|inteiro|real|cadeia|caracter|logico)\b/,
+	keyword: /\b(programa|funcao|se|senao|entao|enquanto|para|faca|retorne|pare|caso|escolha|const|inclua|biblioteca)\b/,
+
+	// ← NOVO TOKEN: tipos de dados com cor separada!
+	type: /\b(inteiro|real|cadeia|caracter|logico)\b/,
 
 	operator: /\b(e|ou|nao)\b|==|!=|<=|>=|\+|-|\*|\/|%|<|>|=/,
 

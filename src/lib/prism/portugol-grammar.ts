@@ -16,29 +16,51 @@ export const portugolPrism = {
     greedy: true
   },
 
+  number: /\b\d+(\.\d+)?\b/,
+
+  boolean: /\b(verdadeiro|falso)\b/,
+
+  keyword: /\b(programa|funcao|inicio|fim|se|senao|entao|enquanto|para|faca|retorne|pare|caso|escolha|const|inclua|biblioteca)\b/,
+
+  control: /\b(se|senao|entao|enquanto|para|faca|caso|escolha)\b/,
+
+  type: /\b(inteiro|real|cadeia|caracter|logico)\b/,
+
+  operator: /\b(e|ou|nao)\b|==|!=|<=|>=|\+|\-|\*|\/|%|<|>|=/,
+
+  builtin: /\b(escreva|leia|limpa|pausa|sorteia|aleatorio)\b/,
+
   'class-name': {
     pattern: /\b(Matematica|Graficos|Arquivos|Sons|Teclado|Mouse|Calendario|Internet)\b/,
     alias: 'builtin'
   },
 
-  keyword: /\b(programa|funcao|inicio|fim|se|senao|entao|escolha|caso|enquanto|para|faca|pare|retorne|const|inclua|biblioteca)\b/,
-
-  type: /\b(inteiro|real|cadeia|caracter|logico)\b/,
-
-  boolean: /\b(verdadeiro|falso|nulo)\b/,
-
-  builtin: /\b(escreva|leia|limpa|pausa|sorteia)\b/,
+  namespace: {
+    pattern: /\b(Matematica|Graficos|Arquivos|Sons|Teclado|Mouse|Calendario|Internet)(?=\.)/,
+    alias: 'class-name'
+  },
 
   function: {
     pattern: /\b[a-zA-Z_]\w*(?=\s*\()/,
     greedy: true
   },
 
-  number: /\b\d+(\.\d+)?\b/,
+  property: {
+    pattern: /(?<=\.)[a-zA-Z_]\w*/,
+    alias: 'function'
+  },
 
-  operator: /==|!=|<=|>=|&&|\|\||<<|>>|[-+*/%<>!=]=?/,
+  constant: /\b(PI|VERDADEIRO|FALSO)\b/,
 
-  punctuation: /[{}[\];(),.:]/,
+  array: {
+    pattern: /\[[^\]]*\]/,
+    inside: {
+      number: /\b\d+\b/,
+      punctuation: /[\[\],]/
+    }
+  },
 
-  identifier: /\b[a-zA-Z_]\w*\b/
+  identifier: /\b[a-zA-Z_]\w*\b/,
+
+  punctuation: /[{}[\];(),.:]/
 }

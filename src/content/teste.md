@@ -138,3 +138,5 @@ Para compilar e executar este código, você precisará de um compilador C (como
 ```c
 printf("Oi, mundo!");
 ```
+
+Fim do arquivo.

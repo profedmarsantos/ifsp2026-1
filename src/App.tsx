@@ -27,15 +27,4 @@ const App = () => (
   </QueryClientProvider>
 );
 
-// No seu componente:
-const { theme, resolvedTheme } = useTheme();
-
-useEffect(() => {
-  console.log("%c [Theme System] ", "background: #222; color: #bada55", {
-    theme,
-    resolvedTheme,
-    documentClass: document.documentElement.className
-  });
-}, [theme, resolvedTheme]);
-
 export default App;

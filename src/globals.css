@@ -1,5 +1,8 @@
-@import './styles/prism-vs.css'; /* Alterado para o novo tema claro */
-@import './styles/prism-vsc-dark-plus.css';
+@import 'prismjs/themes/prism.css'; /* Estilos base do Prism */
+@import 'prismjs/plugins/line-numbers/prism-line-numbers.css'; /* Estilos para numeração de linhas */
+
+@import './styles/prism-vs.css'; /* Tema claro */
+@import './styles/prism-vsc-dark-plus.css'; /* Tema escuro */
 
 @tailwind base;
 @tailwind components;

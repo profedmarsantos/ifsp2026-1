@@ -2,6 +2,12 @@
 @tailwind components;
 @tailwind utilities;
 
+/* Prism Light Theme (default) */
+@import 'prismjs/themes/prism.css';
+
+/* Prism Dark Theme (for dark mode) */
+@import './styles/prism-tomorrow-dark.css';
+
 @layer base {
   :root {
     --background: 210 10% 98%; /* Cor de fundo do canvas/palco: #F9FAFB */

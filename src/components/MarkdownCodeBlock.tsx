@@ -16,6 +16,7 @@ import 'prismjs/components/prism-bash'; // Para scripts de shell
 import 'prismjs/components/prism-json'; // Para JSON
 import 'prismjs/components/prism-python'; // Exemplo: para Python
 import 'prismjs/components/prism-java'; // Exemplo: para Java
+import 'prismjs/components/prism-c'; // Adicionado: Para a linguagem C
 
 interface MarkdownCodeBlockProps {
   inline?: boolean;

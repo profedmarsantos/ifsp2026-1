@@ -1,0 +1,164 @@
+/**
+ * VS Code Dark Plus Nova
+ * Esqueleto baseado no prism-vs.css para garantir compatibilidade estrutural
+ */
+
+code[class*="language-"],
+pre[class*="language-"] {
+    color: #d4d4d4; /* Texto padrão claro */
+    font-size: 13px;
+    text-shadow: none;
+    font-family: Menlo, Monaco, Consolas, "Andale Mono", "Ubuntu Mono", "Courier New", monospace;
+    direction: ltr;
+    text-align: left;
+    white-space: pre;
+    word-spacing: normal;
+    word-break: normal;
+    line-height: 1.5;
+    -moz-tab-size: 4;
+    -o-tab-size: 4;
+    tab-size: 4;
+    -webkit-hyphens: none;
+    -moz-hyphens: none;
+    -ms-hyphens: none;
+    hyphens: none;
+}
+
+pre > code[class*="language-"] {
+    font-size: 1em;
+}
+
+pre[class*="language-"]::-moz-selection, pre[class*="language-"] ::-moz-selection,
+code[class*="language-"]::-moz-selection, code[class*="language-"] ::-moz-selection {
+    background: #264F78; /* Azul de seleção VS Code */
+}
+
+pre[class*="language-"]::selection, pre[class*="language-"] ::selection,
+code[class*="language-"]::selection, code[class*="language-"] ::selection {
+    background: #264F78;
+}
+
+/* Blocos de Código */
+pre[class*="language-"] {
+    padding: 1em;
+    margin: .5em 0;
+    overflow: auto;
+    border: 1px solid #333333; /* Borda escura discreta */
+    background-color: #1e1e1e; /* Fundo padrão VS Code Dark */
+}
+
+/* Código Inline */
+:not(pre) > code[class*="language-"] {
+    padding: .2em;
+    padding-top: 1px;
+    padding-bottom: 1px;
+    border: 1px solid #333333;
+    background: #252526;
+    color: #ce9178; /* Cor de string para destaque inline */
+}
+
+.token.comment,
+.token.prolog,
+.token.doctype,
+.token.cdata {
+    color: #6a9955; /* Verde comentário */
+    font-style: italic;
+}
+
+.token.namespace {
+    opacity: .7;
+}
+
+.token.string {
+    color: #ce9178; /* Laranja/Terracota strings */
+}
+
+.token.punctuation,
+.token.operator {
+    color: #d4d4d4; /* Mantém a cor base do texto */
+}
+
+.token.url,
+.token.symbol,
+.token.number,
+.token.boolean,
+.token.variable,
+.token.constant,
+.token.inserted {
+    color: #b5cea8; /* Verde claro para constantes e números */
+}
+
+.token.atrule,
+.token.keyword,
+.token.attr-value,
+.language-autohotkey .token.selector,
+.language-json .token.boolean,
+.language-json .token.number,
+code[class*="language-css"] {
+    color: #569cd6; /* Azul keywords */
+}
+
+.token.function {
+    color: #dcdcaa; /* Amarelo chamadas de função */
+}
+
+.token.deleted,
+.language-autohotkey .token.tag {
+    color: #d16969;
+}
+
+.token.selector,
+.language-autohotkey .token.keyword {
+    color: #d7ba7d;
+}
+
+.token.important {
+    color: #569cd6;
+}
+
+.token.important,
+.token.bold {
+    font-weight: bold;
+}
+
+.token.italic {
+    font-style: italic;
+}
+
+.token.class-name,
+.language-json .token.property {
+    color: #4ec9b0; /* Turquesa classes/tipos */
+}
+
+.token.tag,
+.token.selector {
+    color: #569cd6;
+}
+
+.token.attr-name,
+.token.property,
+.token.regex,
+.token.entity {
+    color: #9cdcfe; /* Azul claro propriedades */
+}
+
+.token.directive.tag .tag {
+    background: #264f78;
+    color: #d4d4d4;
+}
+
+/* Configurações do Line Numbers Plugin */
+.line-numbers.line-numbers .line-numbers-rows {
+    border-right-color: #404040; /* Linha divisória vertical */
+}
+
+.line-numbers .line-numbers-rows > span:before {
+    color: #858585; /* Cor do número da linha no escuro */
+}
+
+/* Line Highlight */
+.line-highlight.line-highlight {
+    background: rgba(255, 255, 255, 0.05);
+    background: -webkit-linear-gradient(left, rgba(255, 255, 255, 0.05) 70%, rgba(255, 255, 255, 0));
+    background: linear-gradient(to right, rgba(255, 255, 255, 0.05) 70%, rgba(255, 255, 255, 0));
+}

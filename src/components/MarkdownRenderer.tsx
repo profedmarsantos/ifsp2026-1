@@ -5,7 +5,14 @@ import ReactMarkdown from 'react-markdown';
 import remarkGfm from 'remark-gfm';
 import rehypeRaw from 'rehype-raw';
 import MarkdownCodeBlock from './MarkdownCodeBlock';
-import { CodeProps } from 'react-markdown'; // Corrigindo o caminho de importação para CodeProps
+
+// Definindo uma interface local para as props do componente de código
+interface CustomCodeProps extends React.HTMLAttributes<HTMLElement> {
+  inline?: boolean;
+  className?: string;
+  children: React.ReactNode;
+  node?: any; // Adicionando a propriedade 'node'
+}
 
 interface MarkdownRendererProps {
   markdownPath: string;
@@ -47,7 +54,7 @@ const MarkdownRenderer: React.FC<MarkdownRendererProps> = ({ markdownPath }) => 
         remarkPlugins={[remarkGfm]}
         rehypePlugins={[rehypeRaw]}
         components={{
-          code({ node, inline, className, children, ...props }: CodeProps) {
+          code({ node, inline, className, children, ...props }: CustomCodeProps) {
             return (
               <MarkdownCodeBlock inline={inline} className={className} {...props}>
                 {children}

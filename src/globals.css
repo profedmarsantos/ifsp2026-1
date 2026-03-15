@@ -1,5 +1,5 @@
 @import 'prismjs/themes/prism.css';
-@import './styles/prism-tomorrow-dark.css';
+@import './styles/prism-okaidia-dark.css';
 
 @tailwind base;
 @tailwind components;

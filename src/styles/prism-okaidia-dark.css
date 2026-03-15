@@ -128,6 +128,7 @@ html.dark {
   /* Estilos para numeração de linhas no modo escuro */
   .line-numbers .line-numbers-rows {
     border-right-color: #49483e; /* Cor da borda da numeração */
+    background-color: #272822; /* Adicionado: Fundo escuro para a coluna de números */
   }
 
   .line-numbers .line-numbers-rows > span:before {

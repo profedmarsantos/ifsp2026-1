@@ -53,6 +53,7 @@ int main() {
 ```portugol
 programa
 {
+    inclua biblioteca Matematica --> mat
     funcao inicio()
     {
         inteiro a, b

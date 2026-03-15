@@ -4,10 +4,10 @@
 
 @layer base {
   :root {
-    --background: 0 0% 100%;
-    --foreground: 222.2 84% 4.9%;
+    --background: 210 10% 98%; /* Cor de fundo do canvas/palco: #F9FAFB */
+    --foreground: 222.2 84% 4.9%; /* Cor de texto primária: Deep charcoal */
 
-    --card: 0 0% 100%;
+    --card: 0 0% 100%; /* Cor de fundo de painéis/cartões: Pure white */
     --card-foreground: 222.2 84% 4.9%;
 
     --popover: 0 0% 100%;
@@ -32,22 +32,15 @@
     --input: 214.3 31.8% 91.4%;
     --ring: 222.2 84% 4.9%;
 
-    --radius: 0.5rem;
+    --radius: 0.75rem; /* Raio de borda para 12px para arredondamento generoso */
 
     --sidebar-background: 0 0% 98%;
-
     --sidebar-foreground: 240 5.3% 26.1%;
-
     --sidebar-primary: 240 5.9% 10%;
-
     --sidebar-primary-foreground: 0 0% 98%;
-
     --sidebar-accent: 240 4.8% 95.9%;
-
     --sidebar-accent-foreground: 240 5.9% 10%;
-
     --sidebar-border: 220 13% 91%;
-
     --sidebar-ring: 217.2 91.2% 59.8%;
   }
 
@@ -97,5 +90,58 @@
 
   body {
     @apply bg-background text-foreground;
+  }
+}
+
+/* Estilos adicionais para o MarkdownRenderer para garantir que o conteúdo seja bem formatado */
+.markdown-container {
+  /* Adicione estilos globais para o conteúdo Markdown aqui se necessário */
+  /* Por exemplo, para garantir que as imagens se ajustem ao contêiner */
+  & img {
+    max-width: 100%;
+    height: auto;
+    border-radius: var(--radius);
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+  }
+
+  /* Estilos para tabelas */
+  & table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+  }
+
+  & th,
+  & td {
+    border: 1px solid hsl(var(--border));
+    padding: 0.75rem;
+    text-align: left;
+  }
+
+  & th {
+    background-color: hsl(var(--muted));
+    font-weight: 600;
+  }
+
+  /* Estilos para listas */
+  & ul, & ol {
+    margin-left: 1.5rem;
+    margin-bottom: 1rem;
+  }
+
+  & li {
+    margin-bottom: 0.5rem;
+  }
+
+  /* Estilos para blocos de citação */
+  & blockquote {
+    border-left: 0.25rem solid hsl(var(--border));
+    padding-left: 1rem;
+    color: hsl(var(--muted-foreground));
+    font-style: italic;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
   }
 }

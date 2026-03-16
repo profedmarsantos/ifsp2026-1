@@ -145,3 +145,28 @@
     margin-bottom: 1rem;
   }
 }
+
+/* Estilos para impressão */
+@media print {
+  .print-hidden {
+    display: none !important;
+  }
+
+  /* Opcional: Ajustar o layout para impressão */
+  body {
+    background-color: #fff !important; /* Fundo branco para impressão */
+    color: #000 !important; /* Texto preto para impressão */
+  }
+
+  /* Remover margens e padding extras que podem ser indesejados na impressão */
+  .min-h-screen, .p-8 {
+    padding: 0 !important;
+    margin: 0 !important;
+  }
+
+  .markdown-container {
+    box-shadow: none !important; /* Remover sombras */
+    border: none !important; /* Remover bordas */
+    padding: 0 !important;
+  }
+}

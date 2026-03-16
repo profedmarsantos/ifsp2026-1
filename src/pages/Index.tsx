@@ -9,7 +9,7 @@ const Index = () => {
         <PrintButton />
       </div>
       <div className="max-w-4xl w-full mt-16"> {/* Adicionado 'mt-16' para dar espaço ao botão */}
-        <MarkdownRenderer markdownPath="/src/content/teste.md" />
+        <MarkdownRenderer markdownPath="/src/content/009-Operadores logicos e aritmeticos.md" />
       </div>
       <MadeWithDyad />
     </div>

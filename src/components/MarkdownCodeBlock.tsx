@@ -17,6 +17,7 @@ import 'prismjs/components/prism-json'; // Para JSON
 import 'prismjs/components/prism-python'; // Exemplo: para Python
 import 'prismjs/components/prism-java'; // Exemplo: para Java
 import 'prismjs/components/prism-c'; // Adicionado: Para a linguagem C
+import '../../src/lib/prism/register-portugol'; // Garante que Portugol seja registrado
 
 interface MarkdownCodeBlockProps {
   inline?: boolean;
@@ -29,18 +30,27 @@ const MarkdownCodeBlock = ({ inline, className, children }: MarkdownCodeBlockPro
   const match = /language-(\w+)/.exec(className || '');
   const lang = match ? match[1] : 'plaintext';
 
+  // Heurística: Se ReactMarkdown passa className="language-text", é provável que seja código inline.
+  // Isso tenta corrigir a propriedade `inline` do ReactMarkdown se ela estiver se comportando mal.
+  const isActuallyInline = inline || (className === 'language-text');
+
   useEffect(() => {
     if (codeRef.current) {
       Prism.highlightElement(codeRef.current);
     }
   }, [children, lang]);
 
-  if (inline) {
-    return <code className={className}>{children}</code>;
+  if (isActuallyInline) {
+    // Para código inline, retorna apenas a tag <code> sem numeração de linha ou <pre>
+    return (
+      <code className={className}>
+        {children}
+      </code>
+    );
   }
 
-  // Removida a classe de tema Portugol, agora usando apenas o tema padrão do Prism
-  const preClasses = `line-numbers ${className} p-4 rounded-md my-4 overflow-auto`;
+  // Para blocos de código, usa <pre> com numeração de linha
+  const preClasses = `line-numbers ${className || ''} p-4 rounded-md my-4 overflow-auto`;
 
   return (
     <pre className={preClasses}>

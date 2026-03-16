@@ -51,8 +51,8 @@
     --card: 222.2 84% 4.9%;
     --card-foreground: 210 40% 98%;
 
-    --popover: 222.2 84% 4.9%;
-    --popover-foreground: 210 40% 98%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 222.2 84% 4.9%;
 
     --primary: 210 40% 98%;
     --primary-foreground: 222.2 47.4% 11.2%;
@@ -143,6 +143,19 @@
     font-style: italic;
     margin-top: 1rem;
     margin-bottom: 1rem;
+  }
+
+  /* Estilos para código inline */
+  & code:not(pre > code) {
+    display: inline;
+    white-space: pre-wrap;
+    word-break: break-word;
+    background-color: hsl(var(--accent)); /* Usando a cor accent para um fundo sutil */
+    padding: 0.2em 0.4em;
+    border-radius: 0.3em;
+    font-family: monospace;
+    font-size: 85%;
+    color: hsl(var(--foreground)); /* Cor do texto para o código inline */
   }
 }
 

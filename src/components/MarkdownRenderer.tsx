@@ -49,7 +49,7 @@ const MarkdownRenderer: React.FC<MarkdownRendererProps> = ({ markdownPath }) => 
   }
 
   return (
-    <div className="markdown-container p-8 bg-card shadow-lg rounded-lg">
+    <div className="markdown-container prose prose-base p-8 bg-card shadow-lg rounded-lg">
       <ReactMarkdown
         remarkPlugins={[remarkGfm]}
         rehypePlugins={[rehypeRaw]}

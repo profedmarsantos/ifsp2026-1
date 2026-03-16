@@ -30,18 +30,20 @@ const MarkdownCodeBlock = ({ inline, className, children }: MarkdownCodeBlockPro
   const match = /language-(\w+)/.exec(className || '');
   const lang = match ? match[1] : 'plaintext';
 
-  // Heurística: Se ReactMarkdown passa className="language-text", é provável que seja código inline.
-  // Isso tenta corrigir a propriedade `inline` do ReactMarkdown se ela estiver se comportando mal.
-  const isActuallyInline = inline || (className === 'language-text');
+  // Determine if it's a block code snippet.
+  // A block code snippet will have `inline` as false AND a specific language className (e.g., language-c, language-portugol).
+  // Inline code will have `inline` as true, or `className` as `language-text`, or no specific language class.
+  const isBlockCodeSnippet = inline === false && className && className !== 'language-text' && className.startsWith('language-');
 
   useEffect(() => {
-    if (codeRef.current) {
+    // Only apply Prism highlighting and line numbers to block code.
+    if (codeRef.current && isBlockCodeSnippet) {
       Prism.highlightElement(codeRef.current);
     }
-  }, [children, lang]);
+  }, [children, lang, isBlockCodeSnippet]);
 
-  if (isActuallyInline) {
-    // Para código inline, retorna apenas a tag <code> sem numeração de linha ou <pre>
+  if (!isBlockCodeSnippet) {
+    // If it's NOT a block code snippet, treat it as inline.
     return (
       <code className={className}>
         {children}
@@ -49,7 +51,7 @@ const MarkdownCodeBlock = ({ inline, className, children }: MarkdownCodeBlockPro
     );
   }
 
-  // Para blocos de código, usa <pre> com numeração de linha
+  // If it IS a block code snippet, use <pre> with line numbers.
   const preClasses = `line-numbers ${className || ''} p-4 rounded-md my-4 overflow-auto`;
 
   return (

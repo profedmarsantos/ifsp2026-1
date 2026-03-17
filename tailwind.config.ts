@@ -52,6 +52,11 @@ export default {
           DEFAULT: "hsl(var(--card))",
           foreground: "hsl(var(--card-foreground))",
         },
+        "lavender-button": {
+          DEFAULT: "hsl(var(--lavender-button))",
+          foreground: "hsl(var(--lavender-button-foreground))",
+          hover: "hsl(var(--lavender-button-hover))",
+        },
         sidebar: {
           DEFAULT: "hsl(var(--sidebar-background))",
           foreground: "hsl(var(--sidebar-foreground))",

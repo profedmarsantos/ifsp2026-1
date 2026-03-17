@@ -6,9 +6,10 @@ import MarkdownCodeBlock from './MarkdownCodeBlock';
 
 interface MarkdownRendererProps {
   markdownPath: string;
+  baseFontSize: number; // Nova prop para o tamanho da fonte base
 }
 
-const MarkdownRenderer = ({ markdownPath }: MarkdownRendererProps) => {
+const MarkdownRenderer = ({ markdownPath, baseFontSize }: MarkdownRendererProps) => {
   const [markdown, setMarkdown] = useState('');
   const [error, setError] = useState<string | null>(null);
 
@@ -32,20 +33,23 @@ const MarkdownRenderer = ({ markdownPath }: MarkdownRendererProps) => {
   }
 
   return (
-    <div className="markdown-container p-8 bg-white rounded-lg shadow-lg"> {/* Alterado shadow-sm para shadow-lg */}
+    <div 
+      className="markdown-container p-8 bg-white rounded-lg shadow-lg"
+      style={{ fontSize: `${baseFontSize}px` }} // Aplica o tamanho da fonte base aqui
+    >
       <ReactMarkdown
         remarkPlugins={[remarkGfm]}
         rehypePlugins={[rehypeRaw]}
         components={{
           code: MarkdownCodeBlock,
-          h1: ({ node, ...props }) => <h1 className="text-3xl font-bold text-zinc-900 mb-4" {...props} />,
-          h2: ({ node, ...props }) => <h2 className="text-2xl font-semibold text-zinc-800 mb-3 mt-6" {...props} />,
-          h3: ({ node, ...props }) => <h3 className="text-xl font-medium text-zinc-700 mb-2 mt-5" {...props} />,
-          p: ({ node, ...props }) => <p className="text-base text-zinc-700 mb-2 leading-relaxed" {...props} />,
+          h1: ({ node, ...props }) => <h1 style={{ fontSize: '2.25em', fontWeight: 'bold', marginBottom: '1em' }} className="text-zinc-900" {...props} />,
+          h2: ({ node, ...props }) => <h2 style={{ fontSize: '1.75em', fontWeight: 'semibold', marginBottom: '0.75em', marginTop: '1.5em' }} className="text-zinc-800" {...props} />,
+          h3: ({ node, ...props }) => <h3 style={{ fontSize: '1.25em', fontWeight: 'medium', marginBottom: '0.5em', marginTop: '1.25em' }} className="text-zinc-700" {...props} />,
+          p: ({ node, ...props }) => <p style={{ fontSize: '1em', marginBottom: '0.5em', lineHeight: '1.6' }} className="text-zinc-700" {...props} />,
           a: ({ node, ...props }) => <a className="text-blue-600 hover:underline" {...props} />,
-          ul: ({ node, ...props }) => <ul className="list-disc list-inside ml-4 mb-2" {...props} />,
-          ol: ({ node, ...props }) => <ol className="list-decimal list-inside ml-4 mb-2" {...props} />,
-          li: ({ node, ...props }) => <li className="mb-1 text-zinc-700" {...props} />,
+          ul: ({ node, ...props }) => <ul style={{ marginLeft: '1.5em', marginBottom: '0.5em' }} className="list-disc list-inside" {...props} />,
+          ol: ({ node, ...props }) => <ol style={{ marginLeft: '1.5em', marginBottom: '0.5em' }} className="list-decimal list-inside" {...props} />,
+          li: ({ node, ...props }) => <li style={{ marginBottom: '0.25em', fontSize: '1em' }} className="text-zinc-700" {...props} />,
           blockquote: ({ node, ...props }) => <blockquote className="border-l-4 border-zinc-300 pl-4 py-2 italic text-zinc-600 my-4" {...props} />,
           table: ({ node, ...props }) => <table className="w-full border-collapse my-4" {...props} />,
           th: ({ node, ...props }) => <th className="border border-zinc-200 px-4 py-2 text-left bg-zinc-50 font-semibold text-zinc-800" {...props} />,

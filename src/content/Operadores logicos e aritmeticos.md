@@ -8,7 +8,7 @@
 
 Um operador é um símbolo que instrui o compilador a realizar uma operação matemática, lógica ou de comparação específica sobre um ou mais operandos (variáveis ou constantes). O domínio destes operadores é essencial para a construção de expressões válidas em C.
 
-#### 1.1 Operadores Aritméticos
+#### **1.1 Operadores Aritméticos**
 Utilizados para realizar cálculos matemáticos. Em C, operam conforme a álgebra tradicional, com atenção especial à divisão inteira e ao módulo.
 
 | Operador | Símbolo em C | Descrição | Exemplo (C) | Resultado |
@@ -35,7 +35,7 @@ Ao escrever `2.f`, o compilador entende imediatamente que o operando da direita 
 
 *Nota:* O operador Módulo (`%`) só pode ser utilizado com operandos inteiros. Seu uso com `float` gerará erro de compilação.
 
-#### 1.2 Operadores Relacionais
+#### **1.2 Operadores Relacionais**
 Utilizados para comparar dois valores. O resultado de uma operação relacional é sempre lógico (Booleano): Verdadeiro (`1`) ou Falso (`0`). Neste estágio inicial, tratamos o resultado como numérico.
 
 | Operador | Símbolo em C | Descrição | Exemplo (Suponha A=5, B=10) | Resultado (Valor Lógico) |
@@ -51,7 +51,7 @@ Utilizados para comparar dois valores. O resultado de uma operação relacional 
 *   `x = 5` atribui o valor 5 à variável x.
 *   `x == 5` verifica se x possui o valor 5.
 
-#### 1.3 Operadores Lógicos
+#### **1.3 Operadores Lógicos**
 Utilizados para combinar duas ou mais expressões relacionais, formando condições compostas.
 
 | Operador | Símbolo em C | Descrição | Tabela Verdade Resumida |

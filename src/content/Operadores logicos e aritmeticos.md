@@ -71,7 +71,7 @@ Se N = 15: `(15 >= 10)` é Verdadeiro E `(15 <= 20)` é Verdadeiro. Resultado: V
 
 Seguiremos a metodologia da disciplina: Problema → Descrição Natural → Portugol para Web Studio - Estruturado → Código C.
 
-#### Exercício 1: Cálculo de Média e Resto (Foco: Aritmética e Divisão)
+#### **Exercício 1:** Cálculo de Média e Resto (Foco: Aritmética e Divisão)
 **Problema:** Calcule a média aritmética de duas notas inteiras e informe também o resto da divisão da primeira nota pela segunda.
 
 **Descrição Natural:**
@@ -131,7 +131,7 @@ int main() {
 
 ---
 
-#### Exercício 2: Verificação de Igualdade e Diferença (Foco: Relacionais)
+#### **Exercício 2:** Verificação de Igualdade e Diferença (Foco: Relacionais)
 **Problema:** Leia dois números inteiros e verifique se eles são iguais, se o primeiro é maior, ou se o segundo é maior. Exiba 1 para verdadeiro e 0 para falso em cada teste.
 
 **Descrição Natural:**
@@ -190,7 +190,7 @@ int main() {
 
 ---
 
-#### Exercício 3: Validação de Intervalo (Foco: Lógico E - `&&`)
+#### **Exercício 3:** Validação de Intervalo (Foco: Lógico E - `&&`)
 **Problema:** Determine se um número digitado pelo usuário está dentro do intervalo fechado entre 10 e 50.
 
 **Descrição Natural:**
@@ -238,7 +238,7 @@ int main() {
 
 ---
 
-#### Exercício 4: Aprovação Direta ou Recuperação (Foco: Lógico OU - `||`)
+#### **Exercício 4:** Aprovação Direta ou Recuperação (Foco: Lógico OU - `||`)
 **Problema:** Um aluno é considerado "Apto" para a próxima fase se tiver nota maior ou igual a 70 **OU** se tiver frequência maior ou igual a 75%. Leia a nota e a frequência e determine se ele está apto.
 
 **Descrição Natural:**
@@ -291,7 +291,7 @@ int main() {
 
 ---
 
-#### Exercício 5: Negação de Condição (Foco: Lógico NÃO - `!`)
+#### **Exercício 5:** Negação de Condição (Foco: Lógico NÃO - `!`)
 **Problema:** Leia um número inteiro. Verifique se ele **NÃO** é zero.
 
 **Descrição Natural:**
@@ -353,10 +353,10 @@ Regras:
 
 *Objetivo Pedagógico:* Praticar expressões aritméticas complexas e operadores relacionais, preparando a lógica para a próxima aula (Estruturas de Seleção), sem violar o escopo sequencial atual.
 
-#### Etapa 1: Descrição em Linguagem Natural
+#### **Etapa 1:** Descrição em Linguagem Natural
 O programa solicita a distância percorrida. Calcula o valor bruto somando a bandeirada ao produto da distância pelo preço por km. Em seguida, calcula matematicamente quanto representaria 10% desse valor bruto (potencial desconto). O programa também avalia logicamente se a distância é maior que 20 km, retornando 1 (verdadeiro) ou 0 (falso) para essa comparação. Por fim, exibe o valor bruto, o valor potencial do desconto e o resultado da comparação lógica.
 
-#### Etapa 2: Portugol para Web Studio - Estruturado (Foco em Operadores)
+#### **Etapa 2:** Portugol para Web Studio - Estruturado (Foco em Operadores)
 
 ```portugol
 programa
@@ -391,7 +391,7 @@ programa
 }
 ```
 
-#### Etapa 3: Código em C (Estritamente Sequencial)
+#### **Etapa 3:** Código em C (Estritamente Sequencial)
 
 ```c
 #include <stdio.h>

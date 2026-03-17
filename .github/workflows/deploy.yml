@@ -5,6 +5,12 @@ on:
     branches:
       - main # Altere para 'master' se essa for sua branch principal
 
+# Adiciona permissões para o GITHUB_TOKEN
+permissions:
+  contents: write # Necessário para checkout e criação de commits
+  pages: write    # Necessário para o deploy no GitHub Pages
+  id-token: write # Necessário para o peaceiris/actions-gh-pages@v4
+
 jobs:
   build-and-deploy:
     runs-on: ubuntu-latest

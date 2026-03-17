@@ -14,14 +14,14 @@ const FontSizeControls = ({ onIncrease, onDecrease }: FontSizeControlsProps) => 
         className="bg-lavender-button hover:bg-lavender-button-hover text-lavender-button-foreground shadow-md rounded-lg w-8 h-8 flex items-center justify-center"
         aria-label="Diminuir fonte"
       >
-        <span className="text-sm font-bold">a</span> {/* 'a' minúsculo para diminuir */}
+        <span className="text-sm font-bold">A</span> {/* 'A' maiúsculo para diminuir, mas com text-sm */}
       </Button>
       <Button
         onClick={onIncrease}
         className="bg-lavender-button hover:bg-lavender-button-hover text-lavender-button-foreground shadow-md rounded-lg w-8 h-8 flex items-center justify-center"
         aria-label="Aumentar fonte"
       >
-        <span className="text-lg font-bold">A</span> {/* 'A' maiúsculo para aumentar */}
+        <span className="text-lg font-bold">A</span> {/* 'A' maiúsculo para aumentar, com text-lg */}
       </Button>
     </div>
   );

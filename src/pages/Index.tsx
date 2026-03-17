@@ -24,7 +24,7 @@ const Index = () => {
         </div>
       </div>
       <div className="max-w-4xl w-full mt-16">
-        <MarkdownRenderer markdownPath="/src/content/Operadores logicos e aritmeticos.md" baseFontSize={baseFontSize} />
+        <MarkdownRenderer markdownPath="/public/content/Operadores logicos e aritmeticos.md" baseFontSize={baseFontSize} />
       </div>
       <MadeWithDyad />
     </div>

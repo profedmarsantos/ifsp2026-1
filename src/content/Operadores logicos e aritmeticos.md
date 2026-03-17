@@ -1,4 +1,4 @@
-### Tutorial da Aula: Operadores Aritméticos, Relacionais e Lógicos
+### **Tutorial da Aula: Operadores Aritméticos, Relacionais e Lógicos**
 
 **Pré-requisitos:** Variáveis, Tipos de Dados (`int`, `float`), Entrada/Saída (`scanf`, `printf`).
 

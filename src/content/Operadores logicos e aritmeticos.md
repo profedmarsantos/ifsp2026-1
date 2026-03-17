@@ -69,7 +69,7 @@ Se N = 15: `(15 >= 10)` é Verdadeiro E `(15 <= 20)` é Verdadeiro. Resultado: V
 
 ### 2. Exercícios Resolvidos (Modelagem Progressiva)
 
-Seguiremos a metodologia da disciplina: Problema → Descrição Natural → Pseudocódigo Estruturado → Código C.
+Seguiremos a metodologia da disciplina: Problema → Descrição Natural → Portugol para Web Studio - Estruturado → Código C.
 
 #### Exercício 1: Cálculo de Média e Resto (Foco: Aritmética e Divisão)
 **Problema:** Calcule a média aritmética de duas notas inteiras e informe também o resto da divisão da primeira nota pela segunda.
@@ -77,26 +77,29 @@ Seguiremos a metodologia da disciplina: Problema → Descrição Natural → Pse
 **Descrição Natural:**
 O usuário digita duas notas inteiras. O programa calcula a soma delas dividida por 2 para achar a média (que deve ser real). Em seguida, calcula o resto da divisão da primeira nota pela segunda.
 
-**Pseudocódigo Estruturado:**
-```text
-VARIÁVEIS
-    inteiro nota1, nota2, resto
-    real media
+**Portugol para Web Studio - Estruturado:**
+```portugol
+programa
+{
+    funcao inicio()
+    {
+        inteiro nota1, nota2, resto
+        real media
 
-INICIO
-    escreva("Digite a primeira nota: ")
-    leia(nota1)
-    escreva("Digite a segunda nota: ")
-    leia(nota2)
+        escreva("Digite a primeira nota: ")
+        leia(nota1)
+        escreva("Digite a segunda nota: ")
+        leia(nota2)
 
-    // Uso de literal real para garantir divisão real
-    media = (nota1 + nota2) / 2.0
-    
-    resto = nota1 % nota2
+        // Uso de literal real para garantir divisão real
+        media = (nota1 + nota2) / 2.0
+        
+        resto = nota1 % nota2
 
-    escreva("Media: ", media)
-    escreva("Resto da divisao: ", resto)
-FIM
+        escreva("Media: ", media, "\n")
+        escreva("Resto da divisao: ", resto, "\n")
+    }
+}
 ```
 
 **Código em C:**
@@ -134,26 +137,29 @@ int main() {
 **Descrição Natural:**
 Ler dois valores A e B. Comparar A com B usando operadores de igualdade e grandeza. Mostrar o resultado numérico das comparações.
 
-**Pseudocódigo Estruturado:**
-```text
-VARIÁVEIS
-    inteiro A, B
-    inteiro res_igual, res_maior, res_menor
+**Portugol para Web Studio - Estruturado:**
+```portugol
+programa
+{
+    funcao inicio()
+    {
+        inteiro A, B
+        logico res_igual, res_maior, res_menor
 
-INICIO
-    escreva("Digite o valor de A: ")
-    leia(A)
-    escreva("Digite o valor de B: ")
-    leia(B)
+        escreva("Digite o valor de A: ")
+        leia(A)
+        escreva("Digite o valor de B: ")
+        leia(B)
 
-    res_igual = (A == B)
-    res_maior = (A > B)
-    res_menor = (A < B)
+        res_igual = (A == B)
+        res_maior = (A > B)
+        res_menor = (A < B)
 
-    escreva("Sao iguais? (1=Sim, 0=Nao): ", res_igual)
-    escreva("A e maior que B? (1=Sim, 0=Nao): ", res_maior)
-    escreva("A e menor que B? (1=Sim, 0=Nao): ", res_menor)
-FIM
+        escreva("Sao iguais? (V=Verdadeiro, F=Falso): ", res_igual, "\n")
+        escreva("A e maior que B? (V=Verdadeiro, F=Falso): ", res_maior, "\n")
+        escreva("A e menor que B? (V=Verdadeiro, F=Falso): ", res_menor, "\n")
+    }
+}
 ```
 
 **Código em C:**
@@ -190,21 +196,24 @@ int main() {
 **Descrição Natural:**
 Ler um número. Verificar se ele é >= 10 e, simultaneamente, <= 50. Se ambas as condições forem verdadeiras, o resultado é verdadeiro.
 
-**Pseudocódigo Estruturado:**
-```text
-VARIÁVEIS
-    inteiro numero
-    logico dentro_intervalo
+**Portugol para Web Studio - Estruturado:**
+```portugol
+programa
+{
+    funcao inicio()
+    {
+        inteiro numero
+        logico dentro_intervalo
 
-INICIO
-    escreva("Digite um numero: ")
-    leia(numero)
+        escreva("Digite um numero: ")
+        leia(numero)
 
-    // Operador Lógico E (&&)
-    dentro_intervalo = (numero >= 10) && (numero <= 50)
+        // Operador Lógico E (e)
+        dentro_intervalo = (numero >= 10) e (numero <= 50)
 
-    escreva("Esta no intervalo [10, 50]? (1=Sim, 0=Nao): ", dentro_intervalo)
-FIM
+        escreva("Esta no intervalo [10, 50]? (V=Verdadeiro, F=Falso): ", dentro_intervalo, "\n")
+    }
+}
 ```
 
 **Código em C:**
@@ -235,23 +244,26 @@ int main() {
 **Descrição Natural:**
 Ler nota e frequência. Se (Nota >= 70) OU (Frequencia >= 75), então o aluno está apto. Basta uma das condições ser verdadeira.
 
-**Pseudocódigo Estruturado:**
-```text
-VARIÁVEIS
-    real nota, frequencia
-    logico apto
+**Portugol para Web Studio - Estruturado:**
+```portugol
+programa
+{
+    funcao inicio()
+    {
+        real nota, frequencia
+        logico apto
 
-INICIO
-    escreva("Digite a nota (0-100): ")
-    leia(nota)
-    escreva("Digite a frequencia (0-100): ")
-    leia(frequencia)
+        escreva("Digite a nota (0-100): ")
+        leia(nota)
+        escreva("Digite a frequencia (0-100): ")
+        leia(frequencia)
 
-    // Operador Lógico OU (||)
-    apto = (nota >= 70) || (frequencia >= 75)
+        // Operador Lógico OU (ou)
+        apto = (nota >= 70) ou (frequencia >= 75)
 
-    escreva("Aluno Apto? (1=Sim, 0=Nao): ", apto)
-FIM
+        escreva("Aluno Apto? (V=Verdadeiro, F=Falso): ", apto, "\n")
+    }
+}
 ```
 
 **Código em C:**
@@ -285,21 +297,24 @@ int main() {
 **Descrição Natural:**
 Ler um número. Aplicar o operador de negação na condição "ser igual a zero".
 
-**Pseudocódigo Estruturado:**
-```text
-VARIÁVEIS
-    inteiro numero
-    logico diferente_de_zero
+**Portugol para Web Studio - Estruturado:**
+```portugol
+programa
+{
+    funcao inicio()
+    {
+        inteiro numero
+        logico diferente_de_zero
 
-INICIO
-    escreva("Digite um numero: ")
-    leia(numero)
+        escreva("Digite um numero: ")
+        leia(numero)
 
-    // Usando o operador NÃO (!) sobre a igualdade
-    diferente_de_zero = !(numero == 0)
+        // Usando o operador NÃO (nao) sobre a igualdade
+        diferente_de_zero = nao (numero == 0)
 
-    escreva("O numero e diferente de zero? (1=Sim, 0=Nao): ", diferente_de_zero)
-FIM
+        escreva("O numero e diferente de zero? (V=Verdadeiro, F=Falso): ", diferente_de_zero, "\n")
+    }
+}
 ```
 
 **Código em C:**
@@ -341,38 +356,39 @@ Regras:
 #### Etapa 1: Descrição em Linguagem Natural
 O programa solicita a distância percorrida. Calcula o valor bruto somando a bandeirada ao produto da distância pelo preço por km. Em seguida, calcula matematicamente quanto representaria 10% desse valor bruto (potencial desconto). O programa também avalia logicamente se a distância é maior que 20 km, retornando 1 (verdadeiro) ou 0 (falso) para essa comparação. Por fim, exibe o valor bruto, o valor potencial do desconto e o resultado da comparação lógica.
 
-#### Etapa 2: Pseudocódigo Estruturado (Foco em Operadores)
+#### Etapa 2: Portugol para Web Studio - Estruturado (Foco em Operadores)
 
-```text
-VARIÁVEIS
-    real distancia, bandeirada, preco_km
-    real valor_bruto, valor_potencial_desconto
-    logico elegivel_desconto
+```portugol
+programa
+{
+    funcao inicio()
+    {
+        real distancia
+        const real BANDEIRADA = 5.0
+        const real PRECO_KM = 0.80
+        real valor_bruto, valor_potencial_desconto
+        logico elegivel_desconto
 
-CONSTANTES
-    bandeirada = 5.0
-    preco_km = 0.80
+        escreva("Digite a distancia percorrida (km): ")
+        leia(distancia)
 
-INICIO
-    escreva("Digite a distancia percorrida (km): ")
-    leia(distancia)
+        // Cálculo do valor bruto (Operadores Aritméticos)
+        valor_bruto = BANDEIRADA + (distancia * PRECO_KM)
 
-    // Cálculo do valor bruto (Operadores Aritméticos)
-    valor_bruto = bandeirada + (distancia * preco_km)
+        // Cálculo do valor do desconto (Operador Aritmético)
+        // Calculamos quanto seria 10%, independente de ser aplicado ou não agora
+        valor_potencial_desconto = valor_bruto * 0.10
 
-    // Cálculo do valor do desconto (Operador Aritmético)
-    // Calculamos quanto seria 10%, independente de ser aplicado ou não agora
-    valor_potencial_desconto = valor_bruto * 0.10
+        // Avaliação da condição (Operador Relacional)
+        // Retorna verdadeiro ou falso
+        elegivel_desconto = (distancia > 20.0)
 
-    // Avaliação da condição (Operador Relacional)
-    // Retorna 1 se verdade, 0 se falso
-    elegivel_desconto = (distancia > 20)
-
-    escreva("Valor Bruto: R$ ", valor_bruto)
-    escreva("Valor Potencial de Desconto (10%): R$ ", valor_potencial_desconto)
-    escreva("Distancia > 20km? (1=Sim, 0=Nao): ", elegivel_desconto)
-    escreva("Observacao: A aplicacao efetiva do desconto exigira estrutura de selecao (proxima aula).")
-FIM
+        escreva("Valor Bruto: R$ ", valor_bruto, "\n")
+        escreva("Valor Potencial de Desconto (10%): R$ ", valor_potencial_desconto, "\n")
+        escreva("Distancia > 20km? (V=Verdadeiro, F=Falso): ", elegivel_desconto, "\n")
+        escreva("Observacao: A aplicacao efetiva do desconto exigira estrutura de selecao (proxima aula).", "\n")
+    }
+}
 ```
 
 #### Etapa 3: Código em C (Estritamente Sequencial)

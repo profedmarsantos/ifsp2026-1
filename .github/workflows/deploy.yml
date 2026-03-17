@@ -23,6 +23,8 @@ jobs:
 
       - name: Build project
         run: npm run build
+        env: # Define variáveis de ambiente para o passo de build
+          VITE_APP_BASE_PATH: /${{ github.event.repository.name }}/ # Define a base path para o GitHub Pages
 
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v4

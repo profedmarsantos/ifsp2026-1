@@ -8,12 +8,17 @@ import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
 
+// Define a base path para o BrowserRouter.
+// Em desenvolvimento local, será '/' (ou o que for definido em .env.local).
+// No GitHub Pages, será '/nome-do-repositorio/'.
+const basename = import.meta.env.VITE_APP_BASE_PATH || '/';
+
 const App = () => (
   <QueryClientProvider client={queryClient}>
     <TooltipProvider>
       <Toaster />
       <Sonner />
-      <BrowserRouter future={{ v7_startTransition: true }}>
+      <BrowserRouter basename={basename} future={{ v7_startTransition: true }}>
         <Routes>
           <Route path="/" element={<Index />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}

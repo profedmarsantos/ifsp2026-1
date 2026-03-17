@@ -9,20 +9,20 @@ interface FontSizeControlsProps {
 
 const FontSizeControls = ({ onIncrease, onDecrease }: FontSizeControlsProps) => {
   return (
-    <div className="flex flex-col gap-2">
-      <Button
-        onClick={onIncrease}
-        className="bg-lavender-button hover:bg-lavender-button-hover text-lavender-button-foreground shadow-md rounded-lg px-4 py-2 flex items-center justify-center w-12 h-12"
-        aria-label="Aumentar fonte"
-      >
-        <Plus className="h-5 w-5" />
-      </Button>
+    <div className="flex flex-row gap-2">
       <Button
         onClick={onDecrease}
-        className="bg-lavender-button hover:bg-lavender-button-hover text-lavender-button-foreground shadow-md rounded-lg px-4 py-2 flex items-center justify-center w-12 h-12"
+        className="bg-lavender-button hover:bg-lavender-button-hover text-lavender-button-foreground shadow-md rounded-lg w-10 h-10 flex items-center justify-center"
         aria-label="Diminuir fonte"
       >
-        <Minus className="h-5 w-5" />
+        <Minus className="h-4 w-4" />
+      </Button>
+      <Button
+        onClick={onIncrease}
+        className="bg-lavender-button hover:bg-lavender-button-hover text-lavender-button-foreground shadow-md rounded-lg w-10 h-10 flex items-center justify-center"
+        aria-label="Aumentar fonte"
+      >
+        <Plus className="h-4 w-4" />
       </Button>
     </div>
   );

@@ -1,0 +1,55 @@
+{
+  "hash": "70965de2",
+  "configHash": "025f7832",
+  "lockfileHash": "0bfbf845",
+  "browserHash": "84fdc249",
+  "optimized": {
+    "react/jsx-dev-runtime": {
+      "src": "../../node_modules/.pnpm/react@19.2.3/node_modules/react/jsx-dev-runtime.js",
+      "file": "react_jsx-dev-runtime.js",
+      "fileHash": "d79086c0",
+      "needsInterop": true
+    },
+    "react-dom/client": {
+      "src": "../../node_modules/.pnpm/react-dom@19.2.3_react@19.2.3/node_modules/react-dom/client.js",
+      "file": "react-dom_client.js",
+      "fileHash": "3fdea5f8",
+      "needsInterop": true
+    },
+    "@tanstack/react-query": {
+      "src": "../../node_modules/.pnpm/@tanstack+react-query@5.74.4_react@19.2.3/node_modules/@tanstack/react-query/build/modern/index.js",
+      "file": "@tanstack_react-query.js",
+      "fileHash": "8e1a364c",
+      "needsInterop": false
+    },
+    "react-router-dom": {
+      "src": "../../node_modules/.pnpm/react-router-dom@6.30.0_rea_3344545acb73e470b31c270a80934e07/node_modules/react-router-dom/dist/index.js",
+      "file": "react-router-dom.js",
+      "fileHash": "f25063a5",
+      "needsInterop": false
+    },
+    "prismjs": {
+      "src": "../../node_modules/.pnpm/prismjs@1.30.0/node_modules/prismjs/prism.js",
+      "file": "prismjs.js",
+      "fileHash": "289fbea5",
+      "needsInterop": true
+    },
+    "react": {
+      "src": "../../node_modules/.pnpm/react@19.2.3/node_modules/react/index.js",
+      "file": "react.js",
+      "fileHash": "533b1bb6",
+      "needsInterop": true
+    }
+  },
+  "chunks": {
+    "chunk-HYAKRBJP": {
+      "file": "chunk-HYAKRBJP.js"
+    },
+    "chunk-4JE3CHTB": {
+      "file": "chunk-4JE3CHTB.js"
+    },
+    "chunk-3O7X656O": {
+      "file": "chunk-3O7X656O.js"
+    }
+  }
+}

@@ -1,6 +1,5 @@
 import React from 'react';
 import { Button } from '@/components/ui/button';
-import { Plus, Minus } from 'lucide-react';
 
 interface FontSizeControlsProps {
   onIncrease: () => void;
@@ -12,17 +11,17 @@ const FontSizeControls = ({ onIncrease, onDecrease }: FontSizeControlsProps) => 
     <div className="flex flex-row gap-2">
       <Button
         onClick={onDecrease}
-        className="bg-lavender-button hover:bg-lavender-button-hover text-lavender-button-foreground shadow-md rounded-lg w-10 h-10 flex items-center justify-center"
+        className="bg-lavender-button hover:bg-lavender-button-hover text-lavender-button-foreground shadow-md rounded-lg w-8 h-8 flex items-center justify-center"
         aria-label="Diminuir fonte"
       >
-        <Minus className="h-4 w-4" />
+        <span className="text-sm font-bold">a</span> {/* 'a' minúsculo para diminuir */}
       </Button>
       <Button
         onClick={onIncrease}
-        className="bg-lavender-button hover:bg-lavender-button-hover text-lavender-button-foreground shadow-md rounded-lg w-10 h-10 flex items-center justify-center"
+        className="bg-lavender-button hover:bg-lavender-button-hover text-lavender-button-foreground shadow-md rounded-lg w-8 h-8 flex items-center justify-center"
         aria-label="Aumentar fonte"
       >
-        <Plus className="h-4 w-4" />
+        <span className="text-lg font-bold">A</span> {/* 'A' maiúsculo para aumentar */}
       </Button>
     </div>
   );

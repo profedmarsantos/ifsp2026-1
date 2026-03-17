@@ -32,9 +32,9 @@
     --input: 214.3 31.8% 91.4%;
     --ring: 222.2 84% 4.9%;
 
-    --lavender-button: 250 80% 60%; /* Cor principal do botão lavanda */
+    --lavender-button: 248 100% 91%; /* Cor principal do botão lavanda: #D7D0FF */
     --lavender-button-foreground: 0 0% 100%; /* Texto branco */
-    --lavender-button-hover: 250 80% 50%; /* Cor de hover mais escura */
+    --lavender-button-hover: 248 100% 85%; /* Cor de hover mais escura */
 
     --radius: 0.75rem; /* Raio de borda para 12px para arredondamento generoso */
 

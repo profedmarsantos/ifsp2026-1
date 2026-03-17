@@ -17,7 +17,7 @@ const Index = () => {
 
   return (
     <div className="min-h-screen flex flex-col items-center bg-background p-8 relative">
-      <div className="fixed top-8 right-8 flex flex-col gap-4 z-50 items-end"> {/* Contêiner fixo para os botões, alinhado à direita */}
+      <div className="fixed top-8 right-8 flex flex-col gap-[7px] z-50 items-end"> {/* Contêiner fixo para os botões, alinhado à direita, com gap de 7px */}
         <PrintButton />
         <div className="w-full flex justify-center"> {/* Wrapper para centralizar os controles de fonte */}
           <FontSizeControls onIncrease={increaseFontSize} onDecrease={decreaseFontSize} />

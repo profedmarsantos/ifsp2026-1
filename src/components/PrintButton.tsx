@@ -10,7 +10,7 @@ const PrintButton = () => {
   return (
     <Button
       onClick={handlePrint}
-      className="print-hidden bg-lavender-button hover:bg-lavender-button-hover text-lavender-button-foreground shadow-md rounded-lg px-3 py-1.5 flex items-center gap-2"
+      className="print-hidden bg-lavender-button hover:bg-lavender-button-hover text-lavender-button-foreground shadow-md rounded-lg px-2 py-1 h-8 flex items-center gap-2"
     >
       <Printer className="h-4 w-4" />
       Imprimir PDF

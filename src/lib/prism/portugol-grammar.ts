@@ -1,7 +1,13 @@
 export const portugolPrism = {
 	comment: [
-		{ pattern: /\/\/.*/, greedy: true },
-		{ pattern: /\/\*[\s\S]*?\*\//, greedy: true }
+		{
+			pattern: /\/\/.*/,
+			greedy: true
+		},
+		{
+			pattern: /\/\*[\s\S]*?\*\//,
+			greedy: true
+		}
 	],
 
 	string: {
@@ -14,20 +20,20 @@ export const portugolPrism = {
 	boolean: /\b(verdadeiro|falso)\b/,
 
 	namespace: {
-		pattern: /\b(Arquivos|Calendario|Graficos|Internet|Matematica|Mouse|Objetos|ServicosWeb|Sons|Teclado|Texto|Tipos|Util)(?=\.)/,
+		pattern: /\b(Matematica|Graficos|Arquivos|Sons|Teclado|Mouse|Calendario|Internet)(?=\.)/,
 		alias: 'class-name'
 	},
 
 	'class-name': {
-		pattern: /\b(Arquivos|Calendario|Graficos|Internet|Matematica|Mouse|Objetos|ServicosWeb|Sons|Teclado|Texto|Tipos|Util)\b/,
+		pattern: /\b(Matematica|Graficos|Arquivos|Sons|Teclado|Mouse|Calendario|Internet)\b/,
 		alias: 'builtin'
 	},
 
-	keyword: /\b(programa|funcao|se|senao|enquanto|faca|para|escolha|caso|contrario|pare|retorne|constante|inclua|biblioteca)\b/,
+	keyword: /\b(programa|funcao|escreva|leia|inicio|fim|se|senao|entao|enquanto|para|faca|retorne|pare|caso|escolha|const|inclua|biblioteca|inteiro|real|cadeia|caracter|logico)\b/,
 
-	type: /\b(inteiro|real|vazio|logico|cadeia|caracter)\b/,
+	builtin: /\b(limpa|pausa|sorteia|aleatorio)\b/,
 
-	operator: /\b(e|ou|nao)\b|==|!=|<=|>=|\+|-|\*|\/|%|<|>|=\+|-=|\*=|\/=|\+\+|--/,
+	operator: /\b(e|ou|nao)\b|==|!=|<=|>=|\+|-|\*|\/|%|<|>|=/,
 
 	constant: /\b(PI|VERDADEIRO|FALSO)\b/,
 

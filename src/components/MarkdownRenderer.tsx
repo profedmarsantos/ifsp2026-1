@@ -32,7 +32,7 @@ const MarkdownRenderer = ({ markdownPath }: MarkdownRendererProps) => {
   }
 
   return (
-    <div className="markdown-container p-8 bg-white rounded-lg shadow-sm">
+    <div className="markdown-container p-8 bg-white rounded-lg shadow-lg"> {/* Alterado shadow-sm para shadow-lg */}
       <ReactMarkdown
         remarkPlugins={[remarkGfm]}
         rehypePlugins={[rehypeRaw]}

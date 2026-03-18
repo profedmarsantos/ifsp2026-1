@@ -5,15 +5,28 @@ import rehypeRaw from 'rehype-raw';
 import MarkdownCodeBlock from './MarkdownCodeBlock';
 
 interface MarkdownRendererProps {
-  markdownPath: string;
+  markdownPath?: string;
+  markdownContent?: string;
   baseFontSize: number; // Nova prop para o tamanho da fonte base
 }
 
-const MarkdownRenderer = ({ markdownPath, baseFontSize }: MarkdownRendererProps) => {
+const MarkdownRenderer = ({ markdownPath, markdownContent, baseFontSize }: MarkdownRendererProps) => {
   const [markdown, setMarkdown] = useState('');
   const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
+    if (typeof markdownContent === 'string') {
+      setMarkdown(markdownContent);
+      setError(null);
+      return;
+    }
+
+    if (!markdownPath) {
+      setError('No markdown source provided.');
+      setMarkdown('');
+      return;
+    }
+
     fetch(markdownPath)
       .then((res) => {
         if (!res.ok) {
@@ -26,7 +39,7 @@ const MarkdownRenderer = ({ markdownPath, baseFontSize }: MarkdownRendererProps)
         console.error("Error fetching markdown:", err);
         setError("Failed to load markdown content.");
       });
-  }, [markdownPath]);
+  }, [markdownPath, markdownContent]);
 
   if (error) {
     return <div className="text-red-500 p-4">{error}</div>;

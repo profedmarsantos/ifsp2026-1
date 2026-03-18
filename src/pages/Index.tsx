@@ -3,6 +3,7 @@ import { MadeWithDyad } from "@/components/made-with-dyad";
 import MarkdownRenderer from "@/components/MarkdownRenderer";
 import PrintButton from "@/components/PrintButton";
 import FontSizeControls from "@/components/FontSizeControls";
+import defaultMarkdownContent from "@/content/Operadores logicos e aritmeticos.md?raw";
 
 const Index = () => {
   const [baseFontSize, setBaseFontSize] = useState(16); // Tamanho da fonte padrão em pixels
@@ -24,7 +25,7 @@ const Index = () => {
         </div>
       </div>
       <div className="max-w-4xl w-full mt-16">
-        <MarkdownRenderer markdownPath="/public/content/Operadores logicos e aritmeticos.md" baseFontSize={baseFontSize} />
+        <MarkdownRenderer markdownContent={defaultMarkdownContent} baseFontSize={baseFontSize} />
       </div>
       <MadeWithDyad />
     </div>

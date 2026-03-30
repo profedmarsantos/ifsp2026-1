@@ -52,15 +52,35 @@ const Index = () => {
   };
 
   return (
-    <div className="min-h-screen flex flex-col items-center bg-background p-8 relative">
+    <div className="min-h-screen bg-background relative pb-8">
       <div className="fixed top-8 right-8 flex flex-col gap-[7px] z-50 items-end"> {/* Contêiner fixo para os botões, alinhado à direita, com gap de 7px */}
         <PrintButton />
         <div className="w-full flex justify-center"> {/* Wrapper para centralizar os controles de fonte */}
           <FontSizeControls onIncrease={increaseFontSize} onDecrease={decreaseFontSize} />
         </div>
       </div>
-      <div className="max-w-6xl w-full mt-16 flex flex-col lg:flex-row gap-6">
-        <aside className="w-full lg:w-72 bg-white rounded-lg shadow-lg p-4 h-fit">
+
+      <aside className="hidden lg:block fixed left-8 top-8 bottom-8 w-72 bg-white rounded-lg shadow-lg p-4 overflow-y-auto">
+        <h2 className="text-lg font-semibold text-zinc-900">Conteudos</h2>
+        <nav className="mt-3 flex flex-col gap-2">
+          {markdownItems.map((item) => {
+            const isActive = selectedMarkdown?.id === item.id;
+
+            return (
+              <Link
+                key={item.id}
+                to={`?doc=${encodeURIComponent(item.id)}`}
+                className={`block rounded-md px-3 py-2 text-sm transition-colors ${isActive ? 'bg-zinc-900 text-white' : 'bg-zinc-100 text-zinc-800 hover:bg-zinc-200'}`}
+              >
+                {item.title}
+              </Link>
+            );
+          })}
+        </nav>
+      </aside>
+
+      <div className="w-full max-w-4xl mt-24 px-4 lg:mt-8 lg:ml-[22rem] lg:pr-28">
+        <aside className="lg:hidden w-full bg-white rounded-lg shadow-lg p-4 h-fit mb-6">
           <h2 className="text-lg font-semibold text-zinc-900">Conteudos</h2>
           <nav className="mt-3 flex flex-col gap-2">
             {markdownItems.map((item) => {
@@ -79,15 +99,13 @@ const Index = () => {
           </nav>
         </aside>
 
-        <div className="flex-1 min-w-0">
-          {selectedMarkdown ? (
-            <MarkdownRenderer markdownContent={selectedMarkdown.content} baseFontSize={baseFontSize} />
-          ) : (
-            <div className="bg-white rounded-lg shadow-lg p-8 text-zinc-700">
-              Nenhum arquivo markdown encontrado em src/content.
-            </div>
-          )}
-        </div>
+        {selectedMarkdown ? (
+          <MarkdownRenderer markdownContent={selectedMarkdown.content} baseFontSize={baseFontSize} />
+        ) : (
+          <div className="bg-white rounded-lg shadow-lg p-8 text-zinc-700">
+            Nenhum arquivo markdown encontrado em src/content.
+          </div>
+        )}
       </div>
       <MadeWithDyad />
     </div>

@@ -10,10 +10,8 @@ const NotFound = lazy(() => import("./pages/NotFound"));
 
 const queryClient = new QueryClient();
 
-// Define a base path para o BrowserRouter.
-// Em desenvolvimento local, será '/' (ou o que for definido em .env.local).
-// No GitHub Pages, será '/nome-do-repositorio/'.
-const basename = import.meta.env.VITE_APP_BASE_PATH || '/';
+// Keep router basename aligned with Vite's resolved base URL.
+const basename = import.meta.env.BASE_URL;
 
 const App = () => (
   <QueryClientProvider client={queryClient}>

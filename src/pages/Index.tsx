@@ -1,15 +1,15 @@
-import React, { Suspense, lazy, useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { MadeWithDyad } from "@/components/made-with-dyad";
 import PrintButton from "@/components/PrintButton";
 import FontSizeControls from "@/components/FontSizeControls";
 import { Link, useSearchParams } from "react-router-dom";
-
-const MarkdownRenderer = lazy(() => import("@/components/MarkdownRenderer"));
+import MarkdownRenderer from "@/components/MarkdownRenderer";
 
 interface MarkdownMenuItem {
   id: string;
   title: string;
   content: string;
+  order: number;
 }
 
 const markdownModules = import.meta.glob("../content/*.md", {
@@ -22,15 +22,24 @@ const markdownItems: MarkdownMenuItem[] = Object.entries(markdownModules)
   .map(([path, content]) => {
     const fileName = path.split('/').pop() || path;
     const baseName = fileName.replace(/\.md$/i, '');
+    const orderMatch = baseName.match(/^(\d+)\./);
+    const order = orderMatch ? Number.parseInt(orderMatch[1], 10) : Number.MAX_SAFE_INTEGER;
     const title = baseName.replace(/^\d+\.\s*/, '');
 
     return {
       id: fileName,
       title,
       content,
+      order,
     };
   })
-  .sort((a, b) => a.title.localeCompare(b.title, 'pt-BR', { numeric: true, sensitivity: 'base' }));
+  .sort((a, b) => {
+    if (a.order !== b.order) {
+      return a.order - b.order;
+    }
+
+    return a.title.localeCompare(b.title, 'pt-BR', { numeric: true, sensitivity: 'base' });
+  });
 
 const Index = () => {
   const [searchParams, setSearchParams] = useSearchParams();
@@ -108,9 +117,7 @@ const Index = () => {
           <div className="w-full flex justify-center">
             <div className="w-full max-w-4xl">
             {selectedMarkdown ? (
-              <Suspense fallback={<div className="bg-white rounded-lg shadow-lg p-8 text-zinc-700">Carregando conteudo...</div>}>
-                <MarkdownRenderer markdownContent={selectedMarkdown.content} baseFontSize={baseFontSize} />
-              </Suspense>
+              <MarkdownRenderer markdownContent={selectedMarkdown.content} baseFontSize={baseFontSize} />
             ) : (
               <div className="bg-white rounded-lg shadow-lg p-8 text-zinc-700">
                 Nenhum arquivo markdown encontrado em src/content.

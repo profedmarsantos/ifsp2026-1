@@ -3,38 +3,62 @@ name: Deploy to GitHub Pages
 on:
   push:
     branches:
-      - main # Altere para 'master' se essa for sua branch principal
+      - main
+      - master
+  workflow_dispatch:
 
-# Adiciona permissões para o GITHUB_TOKEN
 permissions:
-  contents: write # Necessário para checkout e criação de commits
-  pages: write    # Necessário para o deploy no GitHub Pages
-  id-token: write # Necessário para o peaceiris/actions-gh-pages@v4
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: false
 
 jobs:
-  build-and-deploy:
+  build:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout 
+      - name: Checkout
         uses: actions/checkout@v4
 
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: '20' # Use a versão do Node.js que você prefere
+          node-version: 20
+          cache: pnpm
+
+      - name: Enable Corepack
+        run: corepack enable
 
       - name: Install dependencies
-        run: npm install
+        run: pnpm install --frozen-lockfile
 
       - name: Build project
-        run: npm run build
-        env: # Define variáveis de ambiente para o passo de build
-          VITE_APP_BASE_PATH: /${{ github.event.repository.name }}/ # Define a base path para o GitHub Pages
+        run: pnpm build
+        env:
+          VITE_APP_BASE_PATH: /${{ github.event.repository.name }}/
 
-      - name: Deploy to GitHub Pages
-        uses: peaceiris/actions-gh-pages@v4
+      - name: Add SPA fallback
+        run: cp dist/index.html dist/404.html
+
+      - name: Setup Pages
+        uses: actions/configure-pages@v5
+
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v3
         with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./dist
-          publish_branch: gh-pages # A branch onde o GitHub Pages será publicado
+          path: ./dist
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4

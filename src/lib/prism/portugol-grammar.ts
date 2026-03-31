@@ -46,7 +46,7 @@ export const portugolPrism = {
 		pattern: /\[[^\]]*\]/,
 		inside: {
 			number: /\b\d+\b/,
-			punctuation: /[\[\],]/
+			punctuation: /[[\],]/
 		}
 	},
 

@@ -1,24 +1,12 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { Check, Copy } from 'lucide-react';
-import Prism from 'prismjs';
 import { Button } from '@/components/ui/button';
 import { showError, showSuccess } from '@/utils/toast';
 
 // Importe o plugin de numeração de linhas
 import 'prismjs/plugins/line-numbers/prism-line-numbers.css';
-import 'prismjs/plugins/line-numbers/prism-line-numbers.js';
 
-// Importe os componentes de linguagem do Prism que você espera usar.
-import 'prismjs/components/prism-javascript';
-import 'prismjs/components/prism-typescript';
-import 'prismjs/components/prism-css';
-import 'prismjs/components/prism-markup'; // Para HTML/XML
-import 'prismjs/components/prism-bash'; // Para scripts de shell
-import 'prismjs/components/prism-json'; // Para JSON
-import 'prismjs/components/prism-python'; // Exemplo: para Python
-import 'prismjs/components/prism-java'; // Exemplo: para Java
-import 'prismjs/components/prism-c'; // Adicionado: Para a linguagem C
-import '../../src/lib/prism/register-portugol'; // Garante que Portugol seja registrado
+type PrismModule = typeof import('prismjs');
 
 interface MarkdownCodeBlockProps {
   inline?: boolean;
@@ -28,7 +16,9 @@ interface MarkdownCodeBlockProps {
 
 const MarkdownCodeBlock = ({ inline, className, children }: MarkdownCodeBlockProps) => {
   const codeRef = useRef<HTMLElement>(null);
+  const prismRef = useRef<PrismModule['default'] | null>(null);
   const [copied, setCopied] = useState(false);
+  const [prismReady, setPrismReady] = useState(false);
   
   // Extrai a linguagem do className, padrão para 'plaintext' se não encontrado
   const match = /language-(\w+)/.exec(className || '');
@@ -44,11 +34,46 @@ const MarkdownCodeBlock = ({ inline, className, children }: MarkdownCodeBlockPro
   const shouldHighlight = isBlockCode && className && className.startsWith('language-') && lang !== 'text';
 
   useEffect(() => {
-    if (codeRef.current && shouldHighlight) {
+    let cancelled = false;
+
+    const loadPrism = async () => {
+      const prismModule = await import('prismjs');
+
+      await Promise.all([
+        import('prismjs/plugins/line-numbers/prism-line-numbers.js'),
+        import('prismjs/components/prism-javascript'),
+        import('prismjs/components/prism-typescript'),
+        import('prismjs/components/prism-css'),
+        import('prismjs/components/prism-markup'),
+        import('prismjs/components/prism-bash'),
+        import('prismjs/components/prism-json'),
+        import('prismjs/components/prism-python'),
+        import('prismjs/components/prism-java'),
+        import('prismjs/components/prism-c'),
+        import('@/lib/prism/register-portugol'),
+      ]);
+
+      if (!cancelled) {
+        prismRef.current = prismModule.default;
+        setPrismReady(true);
+      }
+    };
+
+    loadPrism().catch((error) => {
+      console.error('Error loading Prism modules:', error);
+    });
+
+    return () => {
+      cancelled = true;
+    };
+  }, []);
+
+  useEffect(() => {
+    if (codeRef.current && shouldHighlight && prismReady && prismRef.current) {
       // Aplica o highlight do Prism
-      Prism.highlightElement(codeRef.current);
+      prismRef.current.highlightElement(codeRef.current);
     }
-  }, [children, lang, shouldHighlight]); // Re-executa o efeito se o conteúdo, a linguagem ou o status de highlight mudar
+  }, [children, lang, shouldHighlight, prismReady]); // Re-executa o efeito se o conteúdo, a linguagem ou o status de highlight mudar
 
   useEffect(() => {
     if (!copied) {

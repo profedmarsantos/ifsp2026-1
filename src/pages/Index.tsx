@@ -1,9 +1,10 @@
-import React, { useEffect, useState } from 'react';
+import React, { Suspense, lazy, useEffect, useState } from 'react';
 import { MadeWithDyad } from "@/components/made-with-dyad";
-import MarkdownRenderer from "@/components/MarkdownRenderer";
 import PrintButton from "@/components/PrintButton";
 import FontSizeControls from "@/components/FontSizeControls";
 import { Link, useSearchParams } from "react-router-dom";
+
+const MarkdownRenderer = lazy(() => import("@/components/MarkdownRenderer"));
 
 interface MarkdownMenuItem {
   id: string;
@@ -52,15 +53,8 @@ const Index = () => {
   };
 
   return (
-    <div className="min-h-screen bg-background relative pb-8">
-      <div className="fixed top-8 right-8 flex flex-col gap-[7px] z-50 items-end"> {/* Contêiner fixo para os botões, alinhado à direita, com gap de 7px */}
-        <PrintButton />
-        <div className="w-full flex justify-center"> {/* Wrapper para centralizar os controles de fonte */}
-          <FontSizeControls onIncrease={increaseFontSize} onDecrease={decreaseFontSize} />
-        </div>
-      </div>
-
-      <aside className="hidden lg:block fixed left-8 top-8 bottom-8 w-72 bg-white rounded-lg shadow-lg p-4 overflow-y-auto">
+    <div className="bg-background min-h-screen lg:h-screen lg:grid lg:grid-cols-[20rem_minmax(0,1fr)] lg:overflow-hidden">
+      <aside className="hidden lg:block h-screen bg-white border-r border-zinc-200 p-6 overflow-y-auto">
         <h2 className="text-lg font-semibold text-zinc-900">Conteudos</h2>
         <nav className="mt-3 flex flex-col gap-2">
           {markdownItems.map((item) => {
@@ -79,34 +73,54 @@ const Index = () => {
         </nav>
       </aside>
 
-      <div className="w-full max-w-4xl mt-24 px-4 lg:mt-8 lg:ml-[22rem] lg:pr-28">
-        <aside className="lg:hidden w-full bg-white rounded-lg shadow-lg p-4 h-fit mb-6">
-          <h2 className="text-lg font-semibold text-zinc-900">Conteudos</h2>
-          <nav className="mt-3 flex flex-col gap-2">
-            {markdownItems.map((item) => {
-              const isActive = selectedMarkdown?.id === item.id;
-
-              return (
-                <Link
-                  key={item.id}
-                  to={`?doc=${encodeURIComponent(item.id)}`}
-                  className={`block rounded-md px-3 py-2 text-sm transition-colors ${isActive ? 'bg-zinc-900 text-white' : 'bg-zinc-100 text-zinc-800 hover:bg-zinc-200'}`}
-                >
-                  {item.title}
-                </Link>
-              );
-            })}
-          </nav>
-        </aside>
-
-        {selectedMarkdown ? (
-          <MarkdownRenderer markdownContent={selectedMarkdown.content} baseFontSize={baseFontSize} />
-        ) : (
-          <div className="bg-white rounded-lg shadow-lg p-8 text-zinc-700">
-            Nenhum arquivo markdown encontrado em src/content.
+      <main className="w-full lg:h-screen lg:overflow-y-auto">
+        <div className="w-full px-4 pb-8 pt-24 lg:px-8 lg:pb-8 lg:pt-8">
+          <div className="sticky top-4 z-40 mb-4">
+            <div className="w-full flex justify-end pr-0 lg:pr-2">
+              <div className="flex flex-col gap-[7px] items-end rounded-md bg-background/70 p-1 backdrop-blur-sm"> {/* Controles sticky ancorados na extrema direita da area de trabalho */}
+                <PrintButton />
+                <div className="w-full flex justify-center"> {/* Wrapper para centralizar os controles de fonte */}
+                  <FontSizeControls onIncrease={increaseFontSize} onDecrease={decreaseFontSize} />
+                </div>
+              </div>
+            </div>
           </div>
-        )}
-      </div>
+
+          <aside className="lg:hidden w-full bg-white rounded-lg shadow-lg p-4 h-fit mb-6">
+            <h2 className="text-lg font-semibold text-zinc-900">Conteudos</h2>
+            <nav className="mt-3 flex flex-col gap-2">
+              {markdownItems.map((item) => {
+                const isActive = selectedMarkdown?.id === item.id;
+
+                return (
+                  <Link
+                    key={item.id}
+                    to={`?doc=${encodeURIComponent(item.id)}`}
+                    className={`block rounded-md px-3 py-2 text-sm transition-colors ${isActive ? 'bg-zinc-900 text-white' : 'bg-zinc-100 text-zinc-800 hover:bg-zinc-200'}`}
+                  >
+                    {item.title}
+                  </Link>
+                );
+              })}
+            </nav>
+          </aside>
+
+          <div className="w-full flex justify-center">
+            <div className="w-full max-w-4xl">
+            {selectedMarkdown ? (
+              <Suspense fallback={<div className="bg-white rounded-lg shadow-lg p-8 text-zinc-700">Carregando conteudo...</div>}>
+                <MarkdownRenderer markdownContent={selectedMarkdown.content} baseFontSize={baseFontSize} />
+              </Suspense>
+            ) : (
+              <div className="bg-white rounded-lg shadow-lg p-8 text-zinc-700">
+                Nenhum arquivo markdown encontrado em src/content.
+              </div>
+            )}
+            </div>
+          </div>
+        </div>
+      </main>
+
       <MadeWithDyad />
     </div>
   );
